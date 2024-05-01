@@ -928,8 +928,9 @@ function OmniBar:UNIT_SPELLCAST_SUCCEEDED(event, unit, _, spellID)
 	if (not addon.Cooldowns[spellID]) then return end
 
 	local sourceFlags = 0
+  	local reaction = UnitReaction("player", unit)
 
-	if UnitReaction("player", unit) < 4 then
+	if reaction and reaction < 4 then
 		sourceFlags = sourceFlags + COMBATLOG_OBJECT_REACTION_HOSTILE
 	end
 
